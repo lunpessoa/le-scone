@@ -1,0 +1,38 @@
+@function grid($col, $offset: false) {
+  $width: calc($col / $cols) * 100 + "%";
+  $result: calc(#{$width} - #{$gutter});
+  @if $offset == offset {
+    $gutter: calc($gutter / 2);
+    $result: calc(#{$width} + #{$gutter});
+  }
+  @return $result;
+}
+
+@for $i from 1 through $cols {
+  .grid-#{$i} {
+    width: grid($i);
+  }
+  .offset-#{$i} {
+    margin-left: grid($i, offset);
+    @extend %offset;
+  }
+}
+
+@include device(s) {
+  %offset {
+    margin-left: 0px
+  }
+}
+
+// Select all classes that start with word: grid-
+[class^="grid-"] {
+  @include grid-structure;
+}
+
+.container {
+  @include container;
+}
+
+.row {
+  @include row;
+}

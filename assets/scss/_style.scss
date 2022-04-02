@@ -1,0 +1,229 @@
+.intro {
+  margin-top: 60px;
+
+  @include device(s) {
+    margin-top: 20px;
+  }
+
+  &__logo {
+    margin-bottom: 60px;
+  }
+
+  &__info {
+    border-right: 2px solid $dark;
+    max-width: 320px;
+
+    p {
+      padding-top: 10px;
+
+      &:first-child {
+        border-bottom: 2px solid $dark;
+        padding-bottom: 10px;
+      }
+    }
+  }
+
+  &__phone {
+    color: $dark-primary;
+
+    &::after {
+      content: '/ / / /';
+      display: block;
+      margin-top: 12.5rem;
+      font-size: 13.75em;
+      letter-spacing: -90px;
+      color: $dark;
+
+      @include device(m) {
+        margin-top: 80px;
+        font-size: 10em;
+        letter-spacing: -70px;
+      }
+
+      @include device(s) {
+        display: none;
+      }
+    }
+
+    @include device(s) {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__status {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background-color: $success;
+    border-radius: 50%;
+    margin-left: 30px;
+  }
+
+  &__photo {
+    border: 10px solid $secondary-color;
+  }
+}
+
+.menu {
+  margin-block: 120px;
+
+  @include device(s) {
+    margin-block: 60px;
+  }
+
+  &__item {
+    margin-bottom: 60px;
+
+    h2 {
+      @include font-2(24);
+      margin-bottom: 1rem;
+    }
+
+    li {
+      @include font-1(18);
+      line-height: 1.125rem;
+
+      span {
+        display: inline-block;
+        width: 70px;
+        margin-right: 10px;
+        margin-left: -80px;
+        text-align: right;
+        font-family: $font-aref;
+        color: $dark-primary;
+
+        @include device(s) {
+          width: auto;
+          margin-left: 0px;
+        }
+      }
+    }
+
+    img {
+      position: absolute;
+      right: 0;
+      margin-top: 50px;
+      border-radius: 50%;
+      border: 10px solid $secondary-color;
+
+      @include device(l) {
+        right: 120px;
+      }
+
+      @include device(s) {
+        width: 120px;
+        margin-top: 0px;
+      }
+    }
+  }
+}
+
+.contact {
+  margin-block: 120px;
+
+  @include device(s) {
+    margin-block: 60px;
+  }
+
+  &__info {
+    display: inline-block;
+    color: $dark-primary;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+
+    @include device(l) {
+      float: right;
+      text-align: right;
+      margin-top: -3rem;
+      margin-bottom: 3rem;
+    }
+
+    &>p::after {
+      content: ' ////';
+    }
+  }
+
+  &__map {
+    display: block;
+    clear: both;
+    @include box-shadow (0 0 0 10px $secondary-color);
+    img {
+      width: 100%
+    }
+  }
+
+  .form {
+    label {
+      @include font-1(18);
+      display: block;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    textarea {
+      width: 100%;
+      height: 40px;
+      margin-bottom: 1rem;
+      padding-inline: 5px;
+      background-color: transparent;
+      border: 2px solid $dark-primary;
+      caret-color: $dark-primary;
+      color: $dark;
+      @include font-1(18);
+
+      &:hover,
+      &:focus {
+        outline: none;
+        border-color: $secondary-color;
+      }
+    }
+
+    textarea {
+      height: 120px;
+      resize: none;
+    }
+
+    &__button {
+      display: block;
+      width: 200px;
+      padding-top: 5px;
+      border: 2px solid $dark-primary;
+      background-color: transparent;
+      @include box-shadow(5px 5px 0 -2px $secondary-color, 5px 5px 0 0 $dark-primary);
+      @include font-1(18);
+      color: $dark-primary;
+      text-transform: uppercase;
+      cursor: pointer;
+
+      transition: all .2s ease-in-out;
+
+      &:hover {
+        @include box-shadow(3px 3px 0 -2px $secondary-color, 3px 3px 0 0 $dark-primary);
+      }
+    }
+  }
+}
+
+.footer {
+  padding-block: 20px;
+  background-color: $dark;
+  @include box-shadow(0 0 0 10px $dark);
+
+  small {
+    color: $primary-color;
+    font-family: $font-ptmono;
+    @include device(s) {
+      display: flex;
+      text-align: center;
+    }
+  }
+
+  a img {
+    float: right;
+    @include device(s) {
+      float: none;
+      margin: 20px auto;
+    }
+  }
+}

@@ -1,0 +1,87 @@
+@mixin device($size) {
+  @if $size == l {
+    @media screen and (min-width: #{$l-device}) {
+      @content;
+    }
+  }
+  @else if $size == m {
+    @media screen and (min-width: #{$m-device}) and (max-width: #{$l-device - 1}) {
+      @content;
+    }
+  }
+  @else if $size == s {
+    @media screen and (max-width: #{$m-device - 1}) {
+      @content;
+    }
+  }
+}
+
+@mixin grid-structure {
+  float: left;
+  min-height: 1px;
+  margin-left: calc($gutter / 2);
+  margin-right: calc($gutter / 2);
+  @include device(s) {
+    width: 100%;
+    float: none;
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+}
+
+@mixin clearfix {
+  &::after, &::before {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin container {
+  max-width: $l-device;
+  margin-inline: auto;
+  position: relative;
+  @include clearfix();
+  @include device(m) {
+    max-width: $m-device;
+  }
+  @include device(s) {
+    max-width: $s-device;
+    padding-inline: calc($gutter / 2);
+  }
+}
+
+@mixin row {
+  position: relative;
+  margin-inline: calc($gutter / -2);
+  @include clearfix();
+  @include device(s) {
+    margin-inline: 0px;
+  }
+}
+
+@mixin font-1($size) {
+  font-family: $font-ptmono;
+  @if $size == 18 {
+    font-size: 1.125em;
+    line-height: 1.875em;
+  }
+}
+
+@mixin font-2($size) {
+  font-family: $font-aref;
+  @if $size == 18 {
+    font-size: 1.125em;
+    line-height: 1.875em;
+  }
+  @else if $size == 24 {
+    font-size: 1.5rem;
+    line-height: 1.875rem;
+  }
+}
+
+@mixin box-shadow($shadow...) {
+  -webkit-box-shadow: $shadow;
+  -moz-box-shadow: $shadow;
+  box-shadow: $shadow;
+}
